@@ -31,15 +31,16 @@ const port = process.env.PORT || 7000;
 
 // app.use(cors()); // will allow every origin
 
-app.use(cors({
-  origin: Front_URL,
-  methods: ['GET', 'POST'],
+const corsOptions = {
+  origin: 'https://health-for-you.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-}));
+};
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); 
+app.options('*', cors(corsOptions)); // handles preflight properly
+
 
 app.use(express.json());
 
