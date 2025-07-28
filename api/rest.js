@@ -66,8 +66,8 @@ require("../lib/connection.js");
 
 const app = express();
 
-const Front_URL = "https://health-for-you.vercel.app";
-// const Front_URL = "http://localhost:5173"; // use this locally if needed
+// const Front_URL = "https://health-for-you.vercel.app";
+const Front_URL = "http://localhost:5173"; // use this locally if needed
 
 const port = process.env.PORT || 7000;
 
