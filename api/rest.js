@@ -25,7 +25,7 @@ require("../lib/connection.js");
 const app = express();
 
 // const Front_URL = 'http://localhost:5173';
-const Front_URL = 'http://health-for-you.vercel.app';
+const Front_URL = 'https://health-for-you.vercel.app';
 
 const port = process.env.PORT || 7000;
 
@@ -38,9 +38,8 @@ app.use(cors({
   credentials: true,
 }));
 
-
-app.options('*', cors());
-
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 
 app.use(express.json());
 
