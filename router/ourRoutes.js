@@ -203,6 +203,7 @@ router.post("/regis", async (req,res) => {
 
 ///-------------------------get Student LOGIN-------------
 router.post("/login", async (req,res) => {
+    console.log("aagya login krne");
     try {
         let email = req.body.email;
         let password = req.body.password;
