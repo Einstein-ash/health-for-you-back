@@ -29,13 +29,24 @@ const Front_URL = 'https://health-for-you.vercel.app';
 
 const port = process.env.PORT || 7000;
 
-app.use(cors()); // will allow every origin
+// app.use(cors()); // will allow every origin
 
-app.use(cors({
+// app.use(cors({
+//   origin: Front_URL,
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }));
+
+
+const corsOptions = {
   origin: Front_URL,
-  methods: ['GET', 'POST'],
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // ✅ handle preflight requests
 
 
 
