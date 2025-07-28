@@ -25,21 +25,18 @@ require("../lib/connection.js");
 const app = express();
 
 // const Front_URL = 'http://localhost:5173';
-const Front_URL = 'https://health-for-you.vercel.app';
+const Front_URL = 'http://health-for-you.vercel.app';
 
 const port = process.env.PORT || 7000;
 
-// app.use(cors()); // will allow every origin
+app.use(cors()); // will allow every origin
 
-const corsOptions = {
-  origin: 'https://health-for-you.vercel.app',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-};
+app.use(cors({
+  origin: Front_URL,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // handles preflight properly
 
 
 app.use(express.json());
@@ -48,9 +45,9 @@ app.use(express.json());
 app.use(OurRouter);
 
 
-// app.listen(port, () => {
-//     console.log(`Yo bro, Server live at port: ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Yo bro, Server live at port: ${port}`);
+});
 
 
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
