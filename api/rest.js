@@ -25,18 +25,21 @@ require("../lib/connection.js");
 const app = express();
 
 // const Front_URL = 'http://localhost:5173';
-// const Front_URL = 'http://health-for-you.vercel.app';
+const Front_URL = 'http://health-for-you.vercel.app';
 
 const port = process.env.PORT || 7000;
 
-app.use(cors()); // will allow every origin
+// app.use(cors()); // will allow every origin
 
-// app.use(cors({
-//   origin: Front_URL,
-//   methods: ['GET', 'POST'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+app.use(cors({
+  origin: Front_URL,
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
 
+
+app.options('*', cors());
 
 
 app.use(express.json());
