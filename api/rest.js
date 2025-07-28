@@ -17,10 +17,11 @@
 //---------------------------------------------------------
 const express = require("express");
 const cors = require("cors");
+const serverless = require('serverless-http')
 const path = require("path");
-require("./database/connection.js");
+require("../lib/connection.js");
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const OurRouter = require("./router/ourRoutes.js");
+const OurRouter = require("../router/ourRoutes.js");
 const app = express();
 
 // const Front_URL = 'http://localhost:5173';
@@ -43,9 +44,9 @@ app.use(express.json());
 app.use(OurRouter);
 
 
-// app.listen(port, () => {
-//     console.log(`Yo bro, Server live at port: ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Yo bro, Server live at port: ${port}`);
+});
 
 
-module.exports = app;
+// module.exports.handler = serverless(app);
