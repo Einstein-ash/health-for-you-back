@@ -43,7 +43,9 @@ app.use(express.json());
 app.use(OurRouter);
 
 
-app.listen(port, () => {
-    console.log(`Yo bro, Server live at port: ${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Yo bro, Server live at port: ${port}`);
+// });
 
+
+module.exports = app;
